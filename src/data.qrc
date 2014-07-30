@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/graphics">
+        <file>data/icons/scalable/find.svg</file>
+        <file>data/icons/scalable/save.svg</file>
+        <file>data/icons/scalable/reload.svg</file>
+        <file>data/icons/scalable/favorite-selected.svg</file>
+        <file>data/icons/scalable/delete.svg</file>
+        <file>data/icons/scalable/compose.svg</file>
+        <file>data/icons/scalable/add.svg</file>
+        <file>data/icons/print.png</file>
+        <file>data/icons/folder.png</file>
+        <file>data/images/p2.png</file>
+        <file>data/images/p1.png</file>
+        <file>data/images/p2.svg</file>
+        <file>data/images/p1.svg</file>
+        <file>data/icons/scalable/printpreview.svg</file>
+        <file>data/icons/icon.png</file>
+        <file>data/images/twostars.png</file>
+        <file>data/images/threestars.png</file>
+        <file>data/images/onestar.png</file>
+        <file>data/images/splash.png</file>
+    </qresource>
+</RCC>
