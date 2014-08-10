@@ -665,9 +665,8 @@ void MainWindow::insertStudtoDB(QString studname)
 
 void MainWindow::on_actionAdd_Record_triggered()
 {
-    /*
     bool ok;
-    QString studname = QInputDialog::getText(this, tr("Add a Student"),tr("Last Name, M.I. First Name:)", QLineEdit::Normal,"", &ok);
+    QString studname = QInputDialog::getText(this, tr("Add a Student"),tr("Student Name (Last Name, M.I. First Name):"), QLineEdit::Normal,"", &ok);
     if (ok && !studname.isEmpty()){
             if(!db.isOpen()){
                 connectDB();
@@ -679,7 +678,7 @@ void MainWindow::on_actionAdd_Record_triggered()
                 submit();
             }
         }
-        */
+    ui->pushButton_delrec->setEnabled(true);
 }
 
 void  MainWindow::closeEvent(QCloseEvent *event)
@@ -946,9 +945,7 @@ void MainWindow::on_pushButton_addrec_clicked()
                 submit();
             }
         }
-    ui->pushButton_delrec->setEnabled(true);
-
-
+    toggleUserButton();
 }
 
 void MainWindow::on_pushButton_delrec_clicked()
@@ -2507,7 +2504,15 @@ void MainWindow::on_lineEdit_studlrn_textChanged(const QString &arg1)
 void MainWindow::on_actionAbout_HSRCS_triggered()
 {
     //initiate splash
-    QMessageBox::about(this,"About HSRCS","High School Report Card System for automated report card generation and archiving.\n\nCopyright © 2014 Mark Joseph J. Solidarios. \n\nFor comments and suggestions please email the developer, markjoseph.solidarios@outlook.com.\n\nThis program comes with ABSOLUTELY NO WARRANTY.");
+    QString msg = "(HSRCS) High School Report Card System version 1.0 ";
+    msg += "is a free and open-source software (FOSS) for automated report card generation and archiving.\n\n";
+    msg += "Copyright © 2014 Mark Joseph J. Solidarios. \n\n";
+    msg += "The developer would like to thank his teacher, Mrs. Salvacion P. Jade for ";
+    msg += "the initiative and inspiration in pursuing this project.";
+    msg += "\n\nFor comments and suggestions please email the developer, ";
+    msg += "markjoseph.solidarios@outlook.com.\n\n";
+    msg += "This program comes with ABSOLUTELY NO WARRANTY.";
+    QMessageBox::about(this,"About HSRCS v1.0",msg);
 
 }
 
@@ -2600,5 +2605,14 @@ void MainWindow::on_lineEdit_tc4_2_textChanged(const QString &arg1)
        ui->label_tclimit_8->setText("0"+QString::number(tleft));
     }else{
        ui->label_tclimit_8->setText(QString::number(tleft));
+    }
+}
+
+void MainWindow::on_actionExit_triggered()
+{
+
+    if (QMessageBox::Yes == QMessageBox::question(this, "Close Confirmation?","Are you sure you want to exit? Unsaved changes will be lost.", QMessageBox::Yes|QMessageBox::No)){
+        db.close();
+        qApp->exit();
     }
 }

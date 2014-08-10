@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>High School Report Card System</string>
+   <string>High School Report Card System v1.0</string>
   </property>
   <property name="windowIcon">
    <iconset resource="data.qrc">
@@ -77,7 +77,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normalon>:/graphics/data/icons/scalable/add.svg</normalon>
+              <normalon>:/graphics/data/icons/add.png</normalon>
              </iconset>
             </property>
            </widget>
@@ -92,7 +92,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normalon>:/graphics/data/icons/scalable/delete.svg</normalon>
+              <normalon>:/graphics/data/icons/delete.png</normalon>
              </iconset>
             </property>
             <property name="checkable">
@@ -161,7 +161,7 @@
            </sizepolicy>
           </property>
           <property name="currentIndex">
-           <number>4</number>
+           <number>0</number>
           </property>
           <property name="documentMode">
            <bool>false</bool>
@@ -4572,7 +4572,7 @@
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>-427</y>
+                 <y>0</y>
                  <width>755</width>
                  <height>803</height>
                 </rect>
@@ -4983,6 +4983,7 @@
     <addaction name="actionSave"/>
     <addaction name="actionPrint"/>
     <addaction name="actionPrint_Preview"/>
+    <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -5017,6 +5018,7 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionOpen"/>
+   <addaction name="actionAdd_Record"/>
    <addaction name="actionSave"/>
    <addaction name="actionPrint"/>
    <addaction name="actionPrint_Preview"/>
@@ -5040,7 +5042,7 @@
    </property>
    <property name="icon">
     <iconset resource="data.qrc">
-     <normaloff>:/graphics/data/icons/scalable/save.svg</normaloff>:/graphics/data/icons/scalable/save.svg</iconset>
+     <normaloff>:/graphics/data/icons/save.png</normaloff>:/graphics/data/icons/save.png</iconset>
    </property>
    <property name="text">
     <string>Save</string>
@@ -5072,7 +5074,7 @@
   <action name="actionAdd_Record">
    <property name="icon">
     <iconset resource="data.qrc">
-     <normaloff>:/graphics/data/icons/scalable/add.svg</normaloff>:/graphics/data/icons/scalable/add.svg</iconset>
+     <normaloff>:/graphics/data/icons/add.png</normaloff>:/graphics/data/icons/add.png</iconset>
    </property>
    <property name="text">
     <string>Add</string>
@@ -5081,7 +5083,7 @@
   <action name="actionDelete_Record">
    <property name="icon">
     <iconset resource="data.qrc">
-     <normaloff>:/graphics/data/icons/scalable/delete.svg</normaloff>:/graphics/data/icons/scalable/delete.svg</iconset>
+     <normaloff>:/graphics/data/icons/delete.png</normaloff>:/graphics/data/icons/delete.png</iconset>
    </property>
    <property name="text">
     <string>Delete</string>
@@ -5093,7 +5095,7 @@
    </property>
    <property name="icon">
     <iconset resource="data.qrc">
-     <normaloff>:/graphics/data/icons/scalable/printpreview.svg</normaloff>:/graphics/data/icons/scalable/printpreview.svg</iconset>
+     <normaloff>:/graphics/data/icons/printpreview.png</normaloff>:/graphics/data/icons/printpreview.png</iconset>
    </property>
    <property name="text">
     <string>Print Preview</string>
@@ -5105,6 +5107,11 @@
   <action name="actionAbout_HSRCS">
    <property name="text">
     <string>About HSRCS</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
    </property>
   </action>
  </widget>

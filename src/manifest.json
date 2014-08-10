@@ -1,0 +1,15 @@
+{
+    "name": "com.ubuntu.developer.username.hsrcs",
+    "description": "description of hsrcs",
+    "framework": "ubuntu-sdk-14.04-qml-dev1",
+    "architecture": "all",
+    "title": "hsrcs",
+    "hooks": {
+        "hsrcs": {
+            "apparmor": "hsrcs.json",
+            "desktop": "hsrcs.desktop"
+        }
+    },
+    "version": "0.1",
+    "maintainer": ""
+}

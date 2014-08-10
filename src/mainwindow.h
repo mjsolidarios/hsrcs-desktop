@@ -205,7 +205,7 @@ private slots:
 
     void on_actionAbout_HSRCS_triggered();
 
-    //void on_checkBox_3_toggled(bool checked);
+   // void on_checkBox_3_toggled(bool checked);
 
     void on_checkBox_calcGenAve_toggled(bool checked);
 
@@ -221,13 +221,15 @@ private slots:
 
     void on_lineEdit_tc3_1_textChanged(const QString &arg1);
 
-    ///void on_lineEdit_tc3_2_cursorPositionChanged(int arg1, int arg2);
+    //void on_lineEdit_tc3_2_cursorPositionChanged(int arg1, int arg2);
 
     void on_lineEdit_tc3_2_textChanged(const QString &arg1);
 
     void on_lineEdit_tc4_1_textChanged(const QString &arg1);
 
     void on_lineEdit_tc4_2_textChanged(const QString &arg1);
+
+    void on_actionExit_triggered();
 
 private:
     Ui::MainWindow *ui;
