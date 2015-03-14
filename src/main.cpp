@@ -23,10 +23,12 @@ int main(int argc, char *argv[])
     //activate splash
     splash.show();
     splash.raise();
+
+    QString msg;
     //windows
-    QString msg = "<p style='color:white; margin:10'><br><br><br><br><br><br><br><br><br><br><br><br><br>Warning: This application is still under heavy development. Always have a backup copy of your grades.</p>";
+    msg = "<p style='color:white; margin:10'><br><br><br><br><br><br><br><br><br><br><br><br><br>Warning: This application is still under heavy development. Always have a backup copy of your grades.</p>";
     //linux
-    //QString msg = "<p style='color:white; margin:10'><br><br><br><br><br><br><br><br><br><br>Warning: This application is still under heavy development and may contain bugs. Always have a backup copy of your grades.</p>";
+    msg = "<p style='color:white; margin:10'><br><br><br><br><br><br><br><br><br><br>Warning: This application is still under heavy development and may contain bugs. Always have a backup copy of your grades.</p>";
     splash.showMessage(msg,Qt::AlignAbsolute);
 
     return a.exec();

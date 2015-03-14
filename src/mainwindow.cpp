@@ -41,7 +41,7 @@ void MainWindow::on_lineEdit_studsearch_textChanged(const QString &arg1)
 }
 
 void MainWindow::on_lineEdit_studname_editingFinished()
-{    
+{
     submit();
     ui->listWidget->clear();
     QSqlQuery studnamelist_q("SELECT stud_name FROM studrec ORDER BY stud_name ASC");
@@ -738,6 +738,10 @@ void MainWindow::toggleUserButton(){
         ui->scrollArea_attenadd->setEnabled(true);
         ui->groupBox_transferYearLevel->setEnabled(false);
     }
+    // ui->spinBox_g_tve_gr1->setEnabled("false");
+    // ui->spinBox_g_tve_gr2->setEnabled("false");
+    // ui->spinBox_g_tve_gr3->setEnabled("false");
+    // ui->spinBox_g_tve_gr4->setEnabled("false");
 }
 
 void MainWindow::displayVal(QString v){
@@ -1092,44 +1096,46 @@ void MainWindow::printPreview(QPrinter *printer){
     //draw text
 
     QString lrn = ui->lineEdit_studlrn->text();
+    int ybalancer = 2950;
+    int xbalancer = 250;
     if(lrn.length()==12){
         QStringList s = lrn.split(QRegExp("(?!^)"));
-        p.drawText(8530,3080,s[0]);//lrn
-        p.drawText(8740,3080,s[1]);//lrn
-        p.drawText(8930,3080,s[2]);//lrn
-        p.drawText(9140,3080,s[3]);//lrn
-        p.drawText(9340,3080,s[4]);//lrn
-        p.drawText(9550,3080,s[5]);//lrn
-        p.drawText(9750,3080,s[6]);//lrn
-        p.drawText(9950,3080,s[7]);//lrn
-        p.drawText(10160,3080,s[8]);//lrn
-        p.drawText(10350,3080,s[9]);//lrn
-        p.drawText(10560,3080,s[10]);//lrn
-        p.drawText(10760,3080,s[11]);//lrn
+        p.drawText(8530-xbalancer,ybalancer,s[0]);//lrn
+        p.drawText(8740-xbalancer,ybalancer,s[1]);//lrn
+        p.drawText(8930-xbalancer,ybalancer,s[2]);//lrn
+        p.drawText(9140-xbalancer,ybalancer,s[3]);//lrn
+        p.drawText(9340-xbalancer,ybalancer,s[4]);//lrn
+        p.drawText(9540-xbalancer,ybalancer,s[5]);//lrn
+        p.drawText(9745-xbalancer,ybalancer,s[6]);//lrn
+        p.drawText(9930-xbalancer,ybalancer,s[7]);//lrn
+        p.drawText(10110-xbalancer,ybalancer,s[8]);//lrn
+        p.drawText(10300-xbalancer,ybalancer,s[9]);//lrn
+        p.drawText(10510-xbalancer,ybalancer,s[10]);//lrn
+        p.drawText(10710-xbalancer,ybalancer,s[11]);//lrn
     }else{
-        p.drawText(8530,3080,0);//lrn
-        p.drawText(8740,3080,0);//lrn
-        p.drawText(8930,3080,0);//lrn
-        p.drawText(9140,3080,0);//lrn
-        p.drawText(9340,3080,0);//lrn
-        p.drawText(9550,3080,0);//lrn
-        p.drawText(9750,3080,0);//lrn
-        p.drawText(9950,3080,0);//lrn
-        p.drawText(10160,3080,0);//lrn
-        p.drawText(10350,3080,0);//lrn
-        p.drawText(10560,3080,0);//lrn
-        p.drawText(10760,3080,0);//lrn
+        p.drawText(8530-xbalancer,ybalancer,0);//lrn
+        p.drawText(8740-xbalancer,ybalancer,0);//lrn
+        p.drawText(8930-xbalancer,ybalancer,0);//lrn
+        p.drawText(9140-xbalancer,ybalancer,0);//lrn
+        p.drawText(9340-xbalancer,ybalancer,0);//lrn
+        p.drawText(9540-xbalancer,ybalancer,0);//lrn
+        p.drawText(9745-xbalancer,ybalancer,0);//lrn
+        p.drawText(9950-xbalancer,ybalancer,0);//lrn
+        p.drawText(10160-xbalancer,ybalancer,0);//lrn
+        p.drawText(10350-xbalancer,ybalancer,0);//lrn
+        p.drawText(10560-xbalancer,ybalancer,0);//lrn
+        p.drawText(10760-xbalancer,ybalancer,0);//lrn
     }
 
-    p.drawText(6700,3500,ui->lineEdit_studname->text());//name
+    p.drawText(6700,3350,ui->lineEdit_studname->text());//name
     if(!ui->spinBox_age->value()==0){
-    p.drawText(6600,3800,QString::number(ui->spinBox_age->value()));//age
+    p.drawText(6600,3650,QString::number(ui->spinBox_age->value()));//age
     }
 
-    p.drawText(9100,3800,ui->comboBox_gender->currentText());//gender
-    p.drawText(7250,4100,ui->lineEdit_yrsec->text());//year and section
-    p.drawText(7000,4410,ui->lineEdit_curr->text());//curr
-    p.drawText(7050,4710,ui->comboBox_beginSY->currentText() + " - " + ui->comboBox_endSY->currentText());//sy
+    p.drawText(9100,3650,ui->comboBox_gender->currentText());//gender
+    p.drawText(7250,4100-163,ui->lineEdit_yrsec->text());//year and section
+    p.drawText(7000,4410-165,ui->lineEdit_curr->text());//curr
+    p.drawText(7050,4710-160,ui->comboBox_beginSY->currentText() + " - " + ui->comboBox_endSY->currentText());//sy
 
     QFont titleFont = p.font();
     titleFont.setBold(true);
@@ -1141,22 +1147,22 @@ void MainWindow::printPreview(QPrinter *printer){
     schoolName.remove(QRegExp("(high school)|(High School)"));
 
     //guide for centering the title
-    QRect boxHSName(6200,1980,4750,500);
+    QRect boxHSName(6200,1975,4750,500);
     p.drawText(boxHSName,Qt::AlignTop | Qt::AlignCenter,schoolName);
     QRect boxHS(6200,2180,4750,500);
     p.drawText(boxHS,Qt::AlignCenter,"High School");
 
     p.setFont(defaultFont);
     p.drawText(boxHS,Qt::AlignCenter | Qt::AlignTop,"\n\n"+ui->lineEdit_schooladd->text());
-    QRect advisernameBox(8500,7610,1980,300);
+    QRect advisernameBox(8200,7340,1980,300);
     p.drawText(advisernameBox,Qt::AlignCenter,ui->lineEdit_advisername->text());
 
-    QRect principalBox(6050,8250,2560,300);
+    QRect principalBox(5800,7950,2560,300);
     p.drawText(principalBox,Qt::AlignCenter,ui->lineEdit_principalname->text());
 
     //teacher's comments
     int tcXCor = 2030;
-    int tcYbase = 1180;
+    int tcYbase = 1100;
     p.drawText(tcXCor,tcYbase,ui->lineEdit_tc1_1->text());
     p.drawText(tcXCor,tcYbase+240,ui->lineEdit_tc1_2->text());
     p.drawText(tcXCor,tcYbase+(240*2),ui->lineEdit_tc2_1->text());
@@ -1195,8 +1201,8 @@ void MainWindow::printPreview(QPrinter *printer){
     */
 
     //grades
-    int ycor = 1820;
-    int xcor = 3070;
+    int ycor = 1820-80;
+    int xcor = 3070-170;
 
     //grade values
     //first grading
@@ -1205,52 +1211,56 @@ void MainWindow::printPreview(QPrinter *printer){
     int math_gr1= ui->spinBox_g_math_gr1->value();
     int sci_gr1 =ui->spinBox_g_sci_gr1->value();
     int ap_gr1 = ui->spinBox_g_ap_gr1->value();
-    int tve_gr1 = ui->spinBox_g_tve_gr1->value();
+//    int tve_gr1 = ui->spinBox_g_tve_gr1->value();
     int mu_gr1 = ui->spinBox_g_mu_gr1->value();
     int arts_gr1 = ui->spinBox_g_arts_gr1->value();
     int pe_gr1 = ui->spinBox_g_pe_gr1->value();
+    int ht_gr1 = ui->spinBox_g_ht_gr1->value();
     int esp_gr1 = ui->spinBox_g_esp_gr1->value();
-    int icf_gr1 = ui->spinBox_g_icf_gr1->value();
-    int td_gr1 = ui->spinBox_g_td_gr1->value();
+//    int icf_gr1 = ui->spinBox_g_icf_gr1->value();
+//    int td_gr1 = ui->spinBox_g_td_gr1->value();
     //second grading
     int fil_gr2 = ui->spinBox_g_fil_gr2->value();
     int eng_gr2 = ui->spinBox_g_eng_gr2->value();
     int math_gr2= ui->spinBox_g_math_gr2->value();
     int sci_gr2 =ui->spinBox_g_sci_gr2->value();
     int ap_gr2 = ui->spinBox_g_ap_gr2->value();
-    int tve_gr2 = ui->spinBox_g_tve_gr2->value();
+//    int tve_gr2 = ui->spinBox_g_tve_gr2->value();
     int mu_gr2 = ui->spinBox_g_mu_gr2->value();
     int arts_gr2 = ui->spinBox_g_arts_gr2->value();
     int pe_gr2 = ui->spinBox_g_pe_gr2->value();
+    int ht_gr2 = ui->spinBox_g_ht_gr2->value();
     int esp_gr2 = ui->spinBox_g_esp_gr2->value();
-    int icf_gr2 = ui->spinBox_g_icf_gr2->value();
-    int td_gr2 = ui->spinBox_g_td_gr2->value();
+//    int icf_gr2 = ui->spinBox_g_icf_gr2->value();
+//    int td_gr2 = ui->spinBox_g_td_gr2->value();
     //third grading
     int fil_gr3 = ui->spinBox_g_fil_gr3->value();
     int eng_gr3 = ui->spinBox_g_eng_gr3->value();
     int math_gr3= ui->spinBox_g_math_gr3->value();
     int sci_gr3 =ui->spinBox_g_sci_gr3->value();
     int ap_gr3 = ui->spinBox_g_ap_gr3->value();
-    int tve_gr3 = ui->spinBox_g_tve_gr3->value();
+//    int tve_gr3 = ui->spinBox_g_tve_gr3->value();
     int mu_gr3 = ui->spinBox_g_mu_gr3->value();
     int arts_gr3 = ui->spinBox_g_arts_gr3->value();
     int pe_gr3 = ui->spinBox_g_pe_gr3->value();
+    int ht_gr3 = ui->spinBox_g_ht_gr3->value();
     int esp_gr3 = ui->spinBox_g_esp_gr3->value();
-    int icf_gr3 = ui->spinBox_g_icf_gr3->value();
-    int td_gr3 = ui->spinBox_g_td_gr3->value();
+//    int icf_gr3 = ui->spinBox_g_icf_gr3->value();
+//    int td_gr3 = ui->spinBox_g_td_gr3->value();
     //fourth grading
     int fil_gr4 = ui->spinBox_g_fil_gr4->value();
     int eng_gr4 = ui->spinBox_g_eng_gr4->value();
     int math_gr4= ui->spinBox_g_math_gr4->value();
     int sci_gr4 =ui->spinBox_g_sci_gr4->value();
     int ap_gr4 = ui->spinBox_g_ap_gr4->value();
-    int tve_gr4 = ui->spinBox_g_tve_gr4->value();
+//    int tve_gr4 = ui->spinBox_g_tve_gr4->value();
     int mu_gr4 = ui->spinBox_g_mu_gr4->value();
     int arts_gr4 = ui->spinBox_g_arts_gr4->value();
     int pe_gr4 = ui->spinBox_g_pe_gr4->value();
+    int ht_gr4 = ui->spinBox_g_ht_gr4->value();
     int esp_gr4 = ui->spinBox_g_esp_gr4->value();
-    int icf_gr4 = ui->spinBox_g_icf_gr4->value();
-    int td_gr4 = ui->spinBox_g_td_gr4->value();
+//    int icf_gr4 = ui->spinBox_g_icf_gr4->value();
+//    int td_gr4 = ui->spinBox_g_td_gr4->value();
 
     //first grading
     p.drawText(xcor,ycor,checkGradeInput(fil_gr1));
@@ -1258,14 +1268,17 @@ void MainWindow::printPreview(QPrinter *printer){
     p.drawText(xcor,ycor+400,checkGradeInput(math_gr1));
     p.drawText(xcor,ycor+600,checkGradeInput(sci_gr1));
     p.drawText(xcor,ycor+800-20,checkGradeInput(ap_gr1));
-    p.drawText(xcor,ycor+1000-20,checkGradeInput(tve_gr1));
+    //skip tve
+    // p.drawText(xcor,ycor+1000-20,checkGradeInput(tve_gr1));
     //skip mapeh
-    p.drawText(xcor,ycor+1400-20,checkGradeInput(mu_gr1));
-    p.drawText(xcor,ycor+1600-20,checkGradeInput(arts_gr1));
-    p.drawText(xcor,ycor+1800-40,checkGradeInput(pe_gr1));
-    p.drawText(xcor,ycor+2000-40,checkGradeInput(esp_gr1));
-    p.drawText(xcor,ycor+2200-40,checkGradeInput(icf_gr1));
-    p.drawText(xcor,ycor+2400-40,checkGradeInput(td_gr1));
+    //p.drawText(xcor,ycor+1400-60,checkGradeInput(mu_gr1));
+    p.drawText(xcor,ycor+1200-60,checkGradeInput(mu_gr1));
+    p.drawText(xcor,ycor+1400-60,checkGradeInput(arts_gr1));
+    p.drawText(xcor,ycor+1600-80,checkGradeInput(pe_gr1));
+    p.drawText(xcor,ycor+1800-80,checkGradeInput(ht_gr1));
+    p.drawText(xcor,ycor+2000-80,checkGradeInput(esp_gr1));
+    // p.drawText(xcor,ycor+2200-80,checkGradeInput(icf_gr1));
+    // p.drawText(xcor,ycor+2400-80,checkGradeInput(td_gr1));
 
     //2ndgrading
     p.drawText(xcor+270,ycor,checkGradeInput(fil_gr2));
@@ -1273,14 +1286,16 @@ void MainWindow::printPreview(QPrinter *printer){
     p.drawText(xcor+270,ycor+400,checkGradeInput(math_gr2));
     p.drawText(xcor+270,ycor+600,checkGradeInput(sci_gr2));
     p.drawText(xcor+270,ycor+800-20,checkGradeInput(ap_gr2));
-    p.drawText(xcor+270,ycor+1000-20,checkGradeInput(tve_gr2));
+    //skip tve
+    // p.drawText(xcor+270,ycor+1000-20,checkGradeInput(tve_gr2));
     //skip mapeh
-    p.drawText(xcor+270,ycor+1400-20,checkGradeInput(mu_gr2));
-    p.drawText(xcor+270,ycor+1600-20,checkGradeInput(arts_gr2));
-    p.drawText(xcor+270,ycor+1800-40,checkGradeInput(pe_gr2));
-    p.drawText(xcor+270,ycor+2000-40,checkGradeInput(esp_gr2));
-    p.drawText(xcor+270,ycor+2200-40,checkGradeInput(icf_gr2));
-    p.drawText(xcor+270,ycor+2400-40,checkGradeInput(td_gr2));
+    p.drawText(xcor+270,ycor+1200-60,checkGradeInput(mu_gr2));
+    p.drawText(xcor+270,ycor+1400-60,checkGradeInput(arts_gr2));
+    p.drawText(xcor+270,ycor+1600-80,checkGradeInput(pe_gr2));
+    p.drawText(xcor+270,ycor+1800-80,checkGradeInput(ht_gr2));
+    p.drawText(xcor+270,ycor+2000-80,checkGradeInput(esp_gr2));
+    // p.drawText(xcor+270,ycor+2200-80,checkGradeInput(icf_gr2));
+    // p.drawText(xcor+270,ycor+2400-80,checkGradeInput(td_gr2));
 
     //third grading
     p.drawText(xcor+540,ycor,checkGradeInput(fil_gr3));
@@ -1288,14 +1303,16 @@ void MainWindow::printPreview(QPrinter *printer){
     p.drawText(xcor+540,ycor+400,checkGradeInput(math_gr3));
     p.drawText(xcor+540,ycor+600,checkGradeInput(sci_gr3));
     p.drawText(xcor+540,ycor+800-20,checkGradeInput(ap_gr3));
-    p.drawText(xcor+540,ycor+1000-20,checkGradeInput(tve_gr3));
+    //skip tve
+    // p.drawText(xcor+540,ycor+1000-20,checkGradeInput(tve_gr3));
     //skip mapeh
-    p.drawText(xcor+540,ycor+1400-20,checkGradeInput(mu_gr3));
-    p.drawText(xcor+540,ycor+1600-20,checkGradeInput(arts_gr3));
-    p.drawText(xcor+540,ycor+1800-40,checkGradeInput(pe_gr3));
-    p.drawText(xcor+540,ycor+2000-40,checkGradeInput(esp_gr3));
-    p.drawText(xcor+540,ycor+2200-40,checkGradeInput(icf_gr3));
-    p.drawText(xcor+540,ycor+2400-40,checkGradeInput(td_gr3));
+    p.drawText(xcor+540,ycor+1200-60,checkGradeInput(mu_gr3));
+    p.drawText(xcor+540,ycor+1400-60,checkGradeInput(arts_gr3));
+    p.drawText(xcor+540,ycor+1600-80,checkGradeInput(pe_gr3));
+    p.drawText(xcor+540,ycor+1800-80,checkGradeInput(ht_gr3));
+    p.drawText(xcor+540,ycor+2000-80,checkGradeInput(esp_gr3));
+    // p.drawText(xcor+540,ycor+2200-80,checkGradeInput(icf_gr3));
+    // p.drawText(xcor+540,ycor+2400-80,checkGradeInput(td_gr3));
 
     //fourth grading
     p.drawText(xcor+810,ycor,checkGradeInput(fil_gr4));
@@ -1303,14 +1320,16 @@ void MainWindow::printPreview(QPrinter *printer){
     p.drawText(xcor+810,ycor+400,checkGradeInput(math_gr4));
     p.drawText(xcor+810,ycor+600,checkGradeInput(sci_gr4));
     p.drawText(xcor+810,ycor+800-20,checkGradeInput(ap_gr4));
-    p.drawText(xcor+810,ycor+1000-20,checkGradeInput(tve_gr4));
+    //skip tve
+    // p.drawText(xcor+810,ycor+1000-20,checkGradeInput(tve_gr4));
     //skip mapeh
-    p.drawText(xcor+810,ycor+1400-20,checkGradeInput(mu_gr4));
-    p.drawText(xcor+810,ycor+1600-20,checkGradeInput(arts_gr4));
-    p.drawText(xcor+810,ycor+1800-40,checkGradeInput(pe_gr4));
-    p.drawText(xcor+810,ycor+2000-40,checkGradeInput(esp_gr4));
-    p.drawText(xcor+810,ycor+2200-40,checkGradeInput(icf_gr4));
-    p.drawText(xcor+810,ycor+2400-40,checkGradeInput(td_gr4));
+    p.drawText(xcor+810,ycor+1200-60,checkGradeInput(mu_gr4));
+    p.drawText(xcor+810,ycor+1400-60,checkGradeInput(arts_gr4));
+    p.drawText(xcor+810,ycor+1600-80,checkGradeInput(pe_gr4));
+    p.drawText(xcor+810,ycor+1800-80,checkGradeInput(ht_gr4));
+    p.drawText(xcor+810,ycor+2000-80,checkGradeInput(esp_gr4));
+    // p.drawText(xcor+810,ycor+2200-80,checkGradeInput(icf_gr4));
+    // p.drawText(xcor+810,ycor+2400-80,checkGradeInput(td_gr4));
 
     //NR&DR
     float filAVE = gradeAverage(fil_gr1,fil_gr2,fil_gr3,fil_gr4);
@@ -1318,13 +1337,14 @@ void MainWindow::printPreview(QPrinter *printer){
     float mathAVE =gradeAverage(math_gr1,math_gr2,math_gr3,math_gr4);
     float sciAVE = gradeAverage(sci_gr1,sci_gr2,sci_gr3,sci_gr4);
     float apAVE = gradeAverage(ap_gr1,ap_gr2,ap_gr3,ap_gr4);
-    float tveAVE = gradeAverage(tve_gr1,tve_gr2,tve_gr3,tve_gr4);
+    // float tveAVE = gradeAverage(tve_gr1,tve_gr2,tve_gr3,tve_gr4);
     float muAVE = gradeAverage(mu_gr1,mu_gr2,mu_gr3,mu_gr4);
     float artsAVE = gradeAverage(arts_gr1,arts_gr2,arts_gr3,arts_gr4);
-    float peAVE = gradeAverage(pe_gr1,pe_gr2,pe_gr3,pe_gr1);
+    float peAVE = gradeAverage(pe_gr1,pe_gr2,pe_gr3,pe_gr4);
+    float htAVE = gradeAverage(ht_gr1,ht_gr2,ht_gr3,ht_gr4);
     float espAVE = gradeAverage(esp_gr1,esp_gr2,esp_gr3,esp_gr4);
-    float icfAVE = gradeAverage(icf_gr1,icf_gr2,icf_gr3,icf_gr4);
-    float tdAVE = gradeAverage(td_gr1,td_gr2,td_gr3,td_gr4);
+    // float icfAVE = gradeAverage(icf_gr1,icf_gr2,icf_gr3,icf_gr4);
+    // float tdAVE = gradeAverage(td_gr1,td_gr2,td_gr3,td_gr4);
 
     //DR
     if(ui->checkBox_calcDescRat->checkState()){
@@ -1333,58 +1353,68 @@ void MainWindow::printPreview(QPrinter *printer){
         QString mathDR = printDR(determineDR(mathAVE));
         QString sciDR = printDR(determineDR(sciAVE));
         QString apDR = printDR(determineDR(apAVE));
-        QString tveDR = printDR(determineDR(tveAVE));
+//        QString tveDR = printDR(determineDR(tveAVE));
         QString muDR = printDR(determineDR(muAVE));
         QString artsDR = printDR(determineDR(artsAVE));
         QString peDR = printDR(determineDR(peAVE));
+        QString htDR = printDR(determineDR(htAVE));
         QString espDR = printDR(determineDR(espAVE));
-        QString icfDR = printDR(determineDR(icfAVE));
-        QString tdDR = printDR(determineDR(tdAVE));
+//        QString icfDR = printDR(determineDR(icfAVE));
+//        QString tdDR = printDR(determineDR(tdAVE));
 
         p.drawText(xcor+1120-addsubpix(filDR.length()),ycor,filDR);
         p.drawText(xcor+1120-addsubpix(engDR.length()),ycor+200,engDR);
         p.drawText(xcor+1120-addsubpix(mathDR.length()),ycor+400,mathDR);
         p.drawText(xcor+1120-addsubpix(sciDR.length()),ycor+600,sciDR);
         p.drawText(xcor+1120-addsubpix(apDR.length()),ycor+800-20,apDR);
-        p.drawText(xcor+1120-addsubpix(tveDR.length()),ycor+1000-20,tveDR);
-        p.drawText(xcor+1120-addsubpix(muDR.length()),ycor+1400-20,muDR);
-        p.drawText(xcor+1120-addsubpix(artsDR.length()),ycor+1600-20,artsDR);
-        p.drawText(xcor+1120-addsubpix(peDR.length()),ycor+1800-40,peDR);
-        p.drawText(xcor+1120-addsubpix(espDR.length()),ycor+2000-40,espDR);
-        p.drawText(xcor+1120-addsubpix(icfDR.length()),ycor+2200-40,icfDR);
-        p.drawText(xcor+1120-addsubpix(tdDR.length()),ycor+2400-40,tdDR);
+//      disabled tve
+//      p.drawText(xcor+1120-addsubpix(tveDR.length()),ycor+1000-20,tveDR);
+        p.drawText(xcor+1120-addsubpix(muDR.length()),ycor+1200-60,muDR);
+        p.drawText(xcor+1120-addsubpix(artsDR.length()),ycor+1400-60,artsDR);
+        p.drawText(xcor+1120-addsubpix(peDR.length()),ycor+1600-80,peDR);
+        p.drawText(xcor+1120-addsubpix(htDR.length()),ycor+1800-80,htDR);
+        p.drawText(xcor+1120-addsubpix(espDR.length()),ycor+2000-80,espDR);
+//      disabled icf & td
+//      p.drawText(xcor+1120-addsubpix(icfDR.length()),ycor+2200-80,icfDR);
+//      p.drawText(xcor+1120-addsubpix(tdDR.length()),ycor+2400-80,tdDR);
     }
 
     //NR
     if(ui->checkBox_CalcNumRat->checkState()){
         int dlimit = ui->spinBox_NRAveDecLimit->value();
-        p.drawText(xcor+1550-addsubpix(QString::number(filAVE,'f',dlimit).length()),ycor,QString::number(filAVE,'f',dlimit));
-        p.drawText(xcor+1550-addsubpix(QString::number(engAVE,'f',dlimit).length()),ycor+200,QString::number(engAVE,'f',dlimit));
-        p.drawText(xcor+1550-addsubpix(QString::number(mathAVE,'f',dlimit).length()),ycor+400,QString::number(mathAVE,'f',dlimit));
-        p.drawText(xcor+1550-addsubpix(QString::number(sciAVE,'f',dlimit).length()),ycor+600,QString::number(sciAVE,'f',dlimit));
-        p.drawText(xcor+1550-addsubpix(QString::number(apAVE,'f',dlimit).length()),ycor+800-20,QString::number(apAVE,'f',dlimit));
-        p.drawText(xcor+1550-addsubpix(QString::number(tveAVE,'f',dlimit).length()),ycor+1000-20,QString::number(tveAVE,'f',dlimit));
-        p.drawText(xcor+1550-addsubpix(QString::number(muAVE,'f',dlimit).length()),ycor+1400-20,QString::number(muAVE,'f',dlimit));
-        p.drawText(xcor+1550-addsubpix(QString::number(artsAVE,'f',dlimit).length()),ycor+1600-20,QString::number(artsAVE,'f',dlimit));
-        p.drawText(xcor+1550-addsubpix(QString::number(peAVE,'f',dlimit).length()),ycor+1800-40,QString::number(peAVE,'f',dlimit));
-        p.drawText(xcor+1550-addsubpix(QString::number(espAVE,'f',dlimit).length()),ycor+2000-40,QString::number(espAVE,'f',dlimit));
-        p.drawText(xcor+1550-addsubpix(QString::number(icfAVE,'f',dlimit).length()),ycor+2200-40,QString::number(icfAVE,'f',dlimit));
-        p.drawText(xcor+1550-addsubpix(QString::number(tdAVE,'f',dlimit).length()),ycor+2400-40,QString::number(tdAVE,'f',dlimit));
+        p.drawText(xcor+1547-addsubpix(QString::number(filAVE,'f',dlimit).length()),ycor,QString::number(filAVE,'f',dlimit));
+        p.drawText(xcor+1547-addsubpix(QString::number(engAVE,'f',dlimit).length()),ycor+200,QString::number(engAVE,'f',dlimit));
+        p.drawText(xcor+1547-addsubpix(QString::number(mathAVE,'f',dlimit).length()),ycor+400,QString::number(mathAVE,'f',dlimit));
+        p.drawText(xcor+1547-addsubpix(QString::number(sciAVE,'f',dlimit).length()),ycor+600,QString::number(sciAVE,'f',dlimit));
+        p.drawText(xcor+1547-addsubpix(QString::number(apAVE,'f',dlimit).length()),ycor+800-20,QString::number(apAVE,'f',dlimit));
+        //disabled tve
+//        p.drawText(xcor+1498-addsubpix(QString::number(tveAVE,'f',dlimit).length()),ycor+1000-20,QString::number(tveAVE,'f',dlimit));
+        p.drawText(xcor+1547-addsubpix(QString::number(muAVE,'f',dlimit).length()),ycor+1200-60,QString::number(muAVE,'f',dlimit));
+        p.drawText(xcor+1547-addsubpix(QString::number(artsAVE,'f',dlimit).length()),ycor+1400-60,QString::number(artsAVE,'f',dlimit));
+        p.drawText(xcor+1547-addsubpix(QString::number(peAVE,'f',dlimit).length()),ycor+1800-60,QString::number(peAVE,'f',dlimit));
+        p.drawText(xcor+1547-addsubpix(QString::number(htAVE,'f',dlimit).length()),ycor+1600-60,QString::number(htAVE,'f',dlimit));
+        p.drawText(xcor+1547-addsubpix(QString::number(espAVE,'f',dlimit).length()),ycor+2000-80,QString::number(espAVE,'f',dlimit));
+        //disabled icf & td
+//        p.drawText(xcor+1498-addsubpix(QString::number(icfAVE,'f',dlimit).length()),ycor+2200-80,QString::number(icfAVE,'f',dlimit));
+//        p.drawText(xcor+1498-addsubpix(QString::number(tdAVE,'f',dlimit).length()),ycor+2400-80,QString::number(tdAVE,'f',dlimit));
     }
 
     //gen ave
     if(ui->checkBox_calcGenAve->checkState()){
-        float genAVE = (filAVE+engAVE+mathAVE+sciAVE+apAVE+tveAVE+muAVE+artsAVE+peAVE+espAVE+icfAVE+tdAVE)/12;
+      //removed tveAVE, icfAVE and tdAVE
+        float genAVE = (filAVE+engAVE+mathAVE+sciAVE+apAVE+muAVE+artsAVE+peAVE+htAVE+espAVE)/10;
         int genAVEDecLimit = ui->spinBox_genAveDecLimit->value();
-        QRect genAVEBox(4120,4500,1300,300);
+        QRect genAVEBox(3900,4480,1300,300);
         p.drawText(genAVEBox,Qt::AlignCenter,QString::number(genAVE,'f',genAVEDecLimit));
     }
 
+
+
     //attendance
     if(ui->checkBox_attenShow->checkState()){
-        int attenYCor = 6870;
+        int attenYCor = 6598+158;
         int addY = 210;
-        int attenXCor = 2410;
+        int attenXCor = 2290-78;
 
         int njun = ui->spinBox_n_jun->value();
         int njul = ui->spinBox_n_jul->value();
@@ -1441,50 +1471,50 @@ void MainWindow::printPreview(QPrinter *printer){
         adays << ajun << ajul << aaug << asep << aoct << anov << adec << ajan << afeb << amar << aapr;
         tdays << tjun << tjul << taug << tsep << toct << tnov << tdec << tjan << tfeb << tmar << tapr;
 
-        p.drawText(attenXCor,attenYCor,QString::number(ndays[0]));
-        p.drawText(attenXCor,attenYCor+addY,QString::number(pdays[0]));
-        p.drawText(attenXCor,attenYCor+(addY*2),QString::number(adays[0]));
-        p.drawText(attenXCor,attenYCor+(addY*3),QString::number(tdays[0]));
+        p.drawText(attenXCor+50,attenYCor,QString::number(ndays[0]));
+        p.drawText(attenXCor+50,attenYCor+addY,QString::number(pdays[0]));
+        p.drawText(attenXCor+50,attenYCor+(addY*2),QString::number(adays[0]));
+        p.drawText(attenXCor+50,attenYCor+(addY*3),QString::number(tdays[0]));
 
-        p.drawText(attenXCor+280,attenYCor,QString::number(ndays[1]));
-        p.drawText(attenXCor+280,attenYCor+addY,QString::number(pdays[1]));
-        p.drawText(attenXCor+280,attenYCor+(addY*2),QString::number(adays[1]));
-        p.drawText(attenXCor+280,attenYCor+(addY*3),QString::number(tdays[1]));
+        p.drawText(attenXCor+300+50,attenYCor,QString::number(ndays[1]));
+        p.drawText(attenXCor+300+50,attenYCor+addY,QString::number(pdays[1]));
+        p.drawText(attenXCor+300+50,attenYCor+(addY*2),QString::number(adays[1]));
+        p.drawText(attenXCor+300+50,attenYCor+(addY*3),QString::number(tdays[1]));
 
-        p.drawText(attenXCor+(280*2),attenYCor,QString::number(ndays[2]));
-        p.drawText(attenXCor+(280*2),attenYCor+addY,QString::number(pdays[2]));
-        p.drawText(attenXCor+(280*2),attenYCor+(addY*2),QString::number(adays[2]));
-        p.drawText(attenXCor+(280*2),attenYCor+(addY*3),QString::number(tdays[2]));
+        p.drawText(attenXCor+(300*2)+50,attenYCor,QString::number(ndays[2]));
+        p.drawText(attenXCor+(300*2)+50,attenYCor+addY,QString::number(pdays[2]));
+        p.drawText(attenXCor+(300*2)+50,attenYCor+(addY*2),QString::number(adays[2]));
+        p.drawText(attenXCor+(300*2)+50,attenYCor+(addY*3),QString::number(tdays[2]));
 
-        p.drawText(attenXCor+(280*3),attenYCor,QString::number(ndays[3]));
-        p.drawText(attenXCor+(280*3),attenYCor+addY,QString::number(pdays[3]));
-        p.drawText(attenXCor+(280*3),attenYCor+(addY*2),QString::number(adays[3]));
-        p.drawText(attenXCor+(280*3),attenYCor+(addY*3),QString::number(tdays[3]));
+        p.drawText(attenXCor+(300*3)+50,attenYCor,QString::number(ndays[3]));
+        p.drawText(attenXCor+(300*3)+50,attenYCor+addY,QString::number(pdays[3]));
+        p.drawText(attenXCor+(300*3)+50,attenYCor+(addY*2),QString::number(adays[3]));
+        p.drawText(attenXCor+(300*3)+50,attenYCor+(addY*3),QString::number(tdays[3]));
 
-        p.drawText(attenXCor+(280*4)+10,attenYCor,QString::number(ndays[4]));
-        p.drawText(attenXCor+(280*4)+10,attenYCor+addY,QString::number(pdays[4]));
-        p.drawText(attenXCor+(280*4)+10,attenYCor+(addY*2),QString::number(adays[4]));
-        p.drawText(attenXCor+(280*4)+10,attenYCor+(addY*3),QString::number(tdays[4]));
+        p.drawText(attenXCor+(300*4)+10,attenYCor,QString::number(ndays[4]));
+        p.drawText(attenXCor+(300*4)+10,attenYCor+addY,QString::number(pdays[4]));
+        p.drawText(attenXCor+(300*4)+10,attenYCor+(addY*2),QString::number(adays[4]));
+        p.drawText(attenXCor+(300*4)+10,attenYCor+(addY*3),QString::number(tdays[4]));
 
-        p.drawText(attenXCor+(280*5)+20,attenYCor,QString::number(ndays[5]));
-        p.drawText(attenXCor+(280*5)+20,attenYCor+addY,QString::number(pdays[5]));
-        p.drawText(attenXCor+(280*5)+20,attenYCor+(addY*2),QString::number(adays[5]));
-        p.drawText(attenXCor+(280*5)+20,attenYCor+(addY*3),QString::number(tdays[5]));
+        p.drawText(attenXCor+(280*5)+70,attenYCor,QString::number(ndays[5]));
+        p.drawText(attenXCor+(280*5)+70,attenYCor+addY,QString::number(pdays[5]));
+        p.drawText(attenXCor+(280*5)+70,attenYCor+(addY*2),QString::number(adays[5]));
+        p.drawText(attenXCor+(280*5)+70,attenYCor+(addY*3),QString::number(tdays[5]));
 
-        p.drawText(attenXCor+(280*6)+30,attenYCor,QString::number(ndays[6]));
-        p.drawText(attenXCor+(280*6)+30,attenYCor+addY,QString::number(pdays[6]));
-        p.drawText(attenXCor+(280*6)+30,attenYCor+(addY*2),QString::number(adays[6]));
-        p.drawText(attenXCor+(280*6)+30,attenYCor+(addY*3),QString::number(tdays[6]));
+        p.drawText(attenXCor+(280*6)+60,attenYCor,QString::number(ndays[6]));
+        p.drawText(attenXCor+(280*6)+60,attenYCor+addY,QString::number(pdays[6]));
+        p.drawText(attenXCor+(280*6)+60,attenYCor+(addY*2),QString::number(adays[6]));
+        p.drawText(attenXCor+(280*6)+60,attenYCor+(addY*3),QString::number(tdays[6]));
 
-        p.drawText(attenXCor+(280*7)+40,attenYCor,QString::number(ndays[7]));
-        p.drawText(attenXCor+(280*7)+40,attenYCor+addY,QString::number(pdays[7]));
-        p.drawText(attenXCor+(280*7)+40,attenYCor+(addY*2),QString::number(adays[7]));
-        p.drawText(attenXCor+(280*7)+40,attenYCor+(addY*3),QString::number(tdays[7]));
+        p.drawText(attenXCor+(280*7)+90,attenYCor,QString::number(ndays[7]));
+        p.drawText(attenXCor+(280*7)+90,attenYCor+addY,QString::number(pdays[7]));
+        p.drawText(attenXCor+(280*7)+90,attenYCor+(addY*2),QString::number(adays[7]));
+        p.drawText(attenXCor+(280*7)+90,attenYCor+(addY*3),QString::number(tdays[7]));
 
-        p.drawText(attenXCor+(280*8)+50,attenYCor,QString::number(ndays[8]));
-        p.drawText(attenXCor+(280*8)+50,attenYCor+addY,QString::number(pdays[8]));
-        p.drawText(attenXCor+(280*8)+50,attenYCor+(addY*2),QString::number(adays[8]));
-        p.drawText(attenXCor+(280*8)+50,attenYCor+(addY*3),QString::number(tdays[8]));
+        p.drawText(attenXCor+(280*8)+100,attenYCor,QString::number(ndays[8]));
+        p.drawText(attenXCor+(280*8)+100,attenYCor+addY,QString::number(pdays[8]));
+        p.drawText(attenXCor+(280*8)+100,attenYCor+(addY*2),QString::number(adays[8]));
+        p.drawText(attenXCor+(280*8)+100,attenYCor+(addY*3),QString::number(tdays[8]));
 
         p.drawText(attenXCor+(280*9)+60,attenYCor,QString::number(ndays[9]));
         p.drawText(attenXCor+(280*9)+60,attenYCor+addY,QString::number(pdays[9]));
@@ -1516,25 +1546,26 @@ void MainWindow::printPreview(QPrinter *printer){
                 tdays_sum += tdays[i];
             }
 
-            p.drawText(attenXCor+(280*11)+80,attenYCor,QString::number(ndays_sum));
-            p.drawText(attenXCor+(280*11)+80,attenYCor+addY,QString::number(pdays_sum));
-            p.drawText(attenXCor+(280*11)+80,attenYCor+(addY*2),QString::number(adays_sum));
-            p.drawText(attenXCor+(280*11)+80,attenYCor+(addY*3),QString::number(tdays_sum));
+            p.drawText(attenXCor+(280*11),attenYCor,QString::number(ndays_sum));
+            p.drawText(attenXCor+(280*11),attenYCor+addY,QString::number(pdays_sum));
+            p.drawText(attenXCor+(280*11),attenYCor+(addY*2),QString::number(adays_sum));
+            p.drawText(attenXCor+(280*11),attenYCor+(addY*3),QString::number(tdays_sum));
         }
 
     }
 
     //admission
-    QRect admissionBox(2300,7500, 3460,300);
+    int adminAdjustY = 170;
+    QRect admissionBox(2300,7500-adminAdjustY, 3460,300);
     p.drawText(admissionBox,Qt::AlignVCenter,ui->lineEdit_elig_ad->text());
 
-    QRect advUnitsBox(2150,7650, 3760,300);
+    QRect advUnitsBox(2150,7660-adminAdjustY, 3760,300);
     p.drawText(advUnitsBox,Qt::AlignVCenter,ui->lineEdit_adv_units->text());
 
-    QRect lackUnitsBox(1650,7800, 4500,300);
+    QRect lackUnitsBox(1650,7820-adminAdjustY, 4500,300);
     p.drawText(lackUnitsBox,Qt::AlignVCenter,ui->lineEdit_lack_units->text());
 
-    QRect advsrBox(780,8210, 1900,300);
+    QRect advsrBox(780,8210-adminAdjustY,1900,300);
     p.drawText(advsrBox,Qt::AlignCenter,ui->lineEdit_advisername->text());
 
     //stars
@@ -1542,179 +1573,189 @@ void MainWindow::printPreview(QPrinter *printer){
     QPixmap s2(":/graphics/data/images/twostars.png");
     QPixmap s3(":/graphics/data/images/threestars.png");
 
-    int sxbase = 9460;
+    int sxbase = 9100;
+    int starybalancer = 90;
 
-    //onestar boxes
-    QRect s1box_1(sxbase,2530,300,240);
-    QRect s2box_1(sxbase,2900,300,240);
-    QRect s3box_1(sxbase,3260,300,240);
-    QRect s4box_1(sxbase,3580,300,240);
-    QRect s5box_1(sxbase,4000,300,240);
-    QRect s6box_1(sxbase,4500,300,240);
-    QRect s7box_1(sxbase,5140,300,240);
-    QRect s8box_1(sxbase,5700,300,240);
-    QRect s9box_1(sxbase,6060,300,240);
-    QRect s10box_1(sxbase,6400,300,240);
-    QRect s11box_1(sxbase,6840,300,240);
-    QRect s12box_1(sxbase,7340,300,240);
-    QRect s13box_1(sxbase,7740,300,240);
-    QRect s14box_1(sxbase,8220,300,240);
-    QRect s1box_2(sxbase+380,2530,300,240);
-    QRect s2box_2(sxbase+380,2900,300,240);
-    QRect s3box_2(sxbase+380,3260,300,240);
-    QRect s4box_2(sxbase+380,3580,300,240);
-    QRect s5box_2(sxbase+380,4000,300,240);
-    QRect s6box_2(sxbase+380,4500,300,240);
-    QRect s7box_2(sxbase+380,5140,300,240);
-    QRect s8box_2(sxbase+380,5700,300,240);
-    QRect s9box_2(sxbase+380,6060,300,240);
-    QRect s10box_2(sxbase+380,6400,300,240);
-    QRect s11box_2(sxbase+380,6840,300,240);
-    QRect s12box_2(sxbase+380,7340,300,240);
-    QRect s13box_2(sxbase+380,7740,300,240);
-    QRect s14box_2(sxbase+380,8220,300,240);
-    QRect s1box_3(sxbase+(380*2),2530,300,240);
-    QRect s2box_3(sxbase+(380*2),2900,300,240);
-    QRect s3box_3(sxbase+(380*2),3260,300,240);
-    QRect s4box_3(sxbase+(380*2),3580,300,240);
-    QRect s5box_3(sxbase+(380*2),4000,300,240);
-    QRect s6box_3(sxbase+(380*2),4500,300,240);
-    QRect s7box_3(sxbase+(380*2),5140,300,240);
-    QRect s8box_3(sxbase+(380*2),5700,300,240);
-    QRect s9box_3(sxbase+(380*2),6060,300,240);
-    QRect s10box_3(sxbase+(380*2),6400,300,240);
-    QRect s11box_3(sxbase+(380*2),6840,300,240);
-    QRect s12box_3(sxbase+(380*2),7340,300,240);
-    QRect s13box_3(sxbase+(380*2),7740,300,240);
-    QRect s14box_3(sxbase+(380*2),8220,300,240);
-    QRect s1box_4(sxbase+(380*3),2530,300,240);
-    QRect s2box_4(sxbase+(380*3),2900,300,240);
-    QRect s3box_4(sxbase+(380*3),3260,300,240);
-    QRect s4box_4(sxbase+(380*3),3580,300,240);
-    QRect s5box_4(sxbase+(380*3),4000,300,240);
-    QRect s6box_4(sxbase+(380*3),4500,300,240);
-    QRect s7box_4(sxbase+(380*3),5140,300,240);
-    QRect s8box_4(sxbase+(380*3),5700,300,240);
-    QRect s9box_4(sxbase+(380*3),6060,300,240);
-    QRect s10box_4(sxbase+(380*3),6400,300,240);
-    QRect s11box_4(sxbase+(380*3),6840,300,240);
-    QRect s12box_4(sxbase+(380*3),7340,300,240);
-    QRect s13box_4(sxbase+(380*3),7740,300,240);
-    QRect s14box_4(sxbase+(380*3),8220,300,240);
-    //twostars boxes
-    QRect s1box_1_2s(sxbase,2530+50,320,130);
-    QRect s2box_1_2s(sxbase,2900+50,320,130);
-    QRect s3box_1_2s(sxbase,3260+50,320,130);
-    QRect s4box_1_2s(sxbase,3580+50,320,130);
-    QRect s5box_1_2s(sxbase,4000+50,320,130);
-    QRect s6box_1_2s(sxbase,4500+50,320,130);
-    QRect s7box_1_2s(sxbase,5140+50,320,130);
-    QRect s8box_1_2s(sxbase,5700+50,320,130);
-    QRect s9box_1_2s(sxbase,6060+50,320,130);
-    QRect s10box_1_2s(sxbase,6400+50,320,130);
-    QRect s11box_1_2s(sxbase,6840+50,320,130);
-    QRect s12box_1_2s(sxbase,7340+50,320,130);
-    QRect s13box_1_2s(sxbase,7740+50,320,130);
-    QRect s14box_1_2s(sxbase,8220+50,320,130);
-    QRect s1box_2_2s(sxbase+380,2530+50,320,130);
-    QRect s2box_2_2s(sxbase+380,2900+50,320,130);
-    QRect s3box_2_2s(sxbase+380,3260+50,320,130);
-    QRect s4box_2_2s(sxbase+380,3580+50,320,130);
-    QRect s5box_2_2s(sxbase+380,4000+50,320,130);
-    QRect s6box_2_2s(sxbase+380,4500+50,320,130);
-    QRect s7box_2_2s(sxbase+380,5140+50,320,130);
-    QRect s8box_2_2s(sxbase+380,5700+50,320,130);
-    QRect s9box_2_2s(sxbase+380,6060+50,320,130);
-    QRect s10box_2_2s(sxbase+380,6400+50,320,130);
-    QRect s11box_2_2s(sxbase+380,6840+50,320,130);
-    QRect s12box_2_2s(sxbase+380,7340+50,320,130);
-    QRect s13box_2_2s(sxbase+380,7740+50,320,130);
-    QRect s14box_2_2s(sxbase+380,8220+50,320,130);
-    QRect s1box_3_2s(sxbase+(380*2),2530+50,320,130);
-    QRect s2box_3_2s(sxbase+(380*2),2900+50,320,130);
-    QRect s3box_3_2s(sxbase+(380*2),3260+50,320,130);
-    QRect s4box_3_2s(sxbase+(380*2),3580+50,320,130);
-    QRect s5box_3_2s(sxbase+(380*2),4000+50,320,130);
-    QRect s6box_3_2s(sxbase+(380*2),4500+50,320,130);
-    QRect s7box_3_2s(sxbase+(380*2),5140+50,320,130);
-    QRect s8box_3_2s(sxbase+(380*2),5700+50,320,130);
-    QRect s9box_3_2s(sxbase+(380*2),6060+50,320,130);
-    QRect s10box_3_2s(sxbase+(380*2),6400+50,320,130);
-    QRect s11box_3_2s(sxbase+(380*2),6840+50,320,130);
-    QRect s12box_3_2s(sxbase+(380*2),7340+50,320,130);
-    QRect s13box_3_2s(sxbase+(380*2),7740+50,320,130);
-    QRect s14box_3_2s(sxbase+(380*2),8220+50,320,130);
-    QRect s1box_4_2s(sxbase+(380*3),2530+50,320,130);
-    QRect s2box_4_2s(sxbase+(380*3),2900+50,320,130);
-    QRect s3box_4_2s(sxbase+(380*3),3260+50,320,130);
-    QRect s4box_4_2s(sxbase+(380*3),3580+50,320,130);
-    QRect s5box_4_2s(sxbase+(380*3),4000+50,320,130);
-    QRect s6box_4_2s(sxbase+(380*3),4500+50,320,130);
-    QRect s7box_4_2s(sxbase+(380*3),5140+50,320,130);
-    QRect s8box_4_2s(sxbase+(380*3),5700+50,320,130);
-    QRect s9box_4_2s(sxbase+(380*3),6060+50,320,130);
-    QRect s10box_4_2s(sxbase+(380*3),6400+50,320,130);
-    QRect s11box_4_2s(sxbase+(380*3),6840+50,320,130);
-    QRect s12box_4_2s(sxbase+(380*3),7340+50,320,130);
-    QRect s13box_4_2s(sxbase+(380*3),7740+50,320,130);
-    QRect s14box_4_2s(sxbase+(380*3),8220+50,320,130);
-    //threestars boxes
-    QRect s1box_1_3s(sxbase,2530-20,320,240);
-    QRect s2box_1_3s(sxbase,2900-20,320,240);
-    QRect s3box_1_3s(sxbase,3260-20,320,240);
-    QRect s4box_1_3s(sxbase,3580-20,320,240);
-    QRect s5box_1_3s(sxbase,4000-20,320,240);
-    QRect s6box_1_3s(sxbase,4500-20,320,240);
-    QRect s7box_1_3s(sxbase,5140-20,320,240);
-    QRect s8box_1_3s(sxbase,5700-20,320,240);
-    QRect s9box_1_3s(sxbase,6060-20,320,240);
-    QRect s10box_1_3s(sxbase,6400-20,320,240);
-    QRect s11box_1_3s(sxbase,6840-20,320,240);
-    QRect s12box_1_3s(sxbase,7340-20,320,240);
-    QRect s13box_1_3s(sxbase,7740-20,320,240);
-    QRect s14box_1_3s(sxbase,8220-20,320,240);
-    QRect s1box_2_3s(sxbase+380,2530-20,320,240);
-    QRect s2box_2_3s(sxbase+380,2900-20,320,240);
-    QRect s3box_2_3s(sxbase+380,3260-20,320,240);
-    QRect s4box_2_3s(sxbase+380,3580-20,320,240);
-    QRect s5box_2_3s(sxbase+380,4000-20,320,240);
-    QRect s6box_2_3s(sxbase+380,4500-20,320,240);
-    QRect s7box_2_3s(sxbase+380,5140-20,320,240);
-    QRect s8box_2_3s(sxbase+380,5700-20,320,240);
-    QRect s9box_2_3s(sxbase+380,6060-20,320,240);
-    QRect s10box_2_3s(sxbase+380,6400-20,320,240);
-    QRect s11box_2_3s(sxbase+380,6840-20,320,240);
-    QRect s12box_2_3s(sxbase+380,7340-20,320,240);
-    QRect s13box_2_3s(sxbase+380,7740-20,320,240);
-    QRect s14box_2_3s(sxbase+380,8220-20,320,240);
-    QRect s1box_3_3s(sxbase+(380*2),2530-20,320,240);
-    QRect s2box_3_3s(sxbase+(380*2),2900-20,320,240);
-    QRect s3box_3_3s(sxbase+(380*2),3260-20,320,240);
-    QRect s4box_3_3s(sxbase+(380*2),3580-20,320,240);
-    QRect s5box_3_3s(sxbase+(380*2),4000-20,320,240);
-    QRect s6box_3_3s(sxbase+(380*2),4500-20,320,240);
-    QRect s7box_3_3s(sxbase+(380*2),5140-20,320,240);
-    QRect s8box_3_3s(sxbase+(380*2),5700-20,320,240);
-    QRect s9box_3_3s(sxbase+(380*2),6060-20,320,240);
-    QRect s10box_3_3s(sxbase+(380*2),6400-20,320,240);
-    QRect s11box_3_3s(sxbase+(380*2),6840-20,320,240);
-    QRect s12box_3_3s(sxbase+(380*2),7340-20,320,240);
-    QRect s13box_3_3s(sxbase+(380*2),7740-20,320,240);
-    QRect s14box_3_3s(sxbase+(380*2),8220-20,320,240);
-    QRect s1box_4_3s(sxbase+(380*3),2530-20,320,240);
-    QRect s2box_4_3s(sxbase+(380*3),2900-20,320,240);
-    QRect s3box_4_3s(sxbase+(380*3),3260-20,320,240);
-    QRect s4box_4_3s(sxbase+(380*3),3580-20,320,240);
-    QRect s5box_4_3s(sxbase+(380*3),4000-20,320,240);
-    QRect s6box_4_3s(sxbase+(380*3),4500-20,320,240);
-    QRect s7box_4_3s(sxbase+(380*3),5140-20,320,240);
-    QRect s8box_4_3s(sxbase+(380*3),5700-20,320,240);
-    QRect s9box_4_3s(sxbase+(380*3),6060-20,320,240);
-    QRect s10box_4_3s(sxbase+(380*3),6400-20,320,240);
-    QRect s11box_4_3s(sxbase+(380*3),6840-20,320,240);
-    QRect s12box_4_3s(sxbase+(380*3),7340-20,320,240);
-    QRect s13box_4_3s(sxbase+(380*3),7740-20,320,240);
-    QRect s14box_4_3s(sxbase+(380*3),8220-20,320,240);
+    //1st
+    QRect s1box_1(sxbase,2530-starybalancer,300,240);
+    QRect s2box_1(sxbase,2900-starybalancer,300,240);
+    QRect s3box_1(sxbase,3260-starybalancer-40,300,240);
+    QRect s4box_1(sxbase,3580-starybalancer-40,300,240);
+    QRect s5box_1(sxbase,4000-starybalancer-40,300,240);
+    QRect s6box_1(sxbase,4500-starybalancer-40,300,240);
+    QRect s7box_1(sxbase,5140-starybalancer-40,300,240);
+    QRect s8box_1(sxbase,5700-starybalancer-90,300,240);
+    QRect s9box_1(sxbase,6060-starybalancer-100,300,240);
+    QRect s10box_1(sxbase,6400-starybalancer-110,300,240);
+    QRect s11box_1(sxbase,6840-starybalancer-130,300,240);
+    QRect s12box_1(sxbase,7340-starybalancer-150,300,240);
+    QRect s13box_1(sxbase,7740-starybalancer-150,300,240);
+    QRect s14box_1(sxbase,8220-starybalancer-170,300,240);
+    //2nd
+    QRect s1box_2(sxbase+380,2530-starybalancer,300,240);
+    QRect s2box_2(sxbase+380,2900-starybalancer,300,240);
+    QRect s3box_2(sxbase+380,3260-starybalancer-40,300,240);
+    QRect s4box_2(sxbase+380,3580-starybalancer-40,300,240);
+    QRect s5box_2(sxbase+380,4000-starybalancer-40,300,240);
+    QRect s6box_2(sxbase+380,4500-starybalancer-40,300,240);
+    QRect s7box_2(sxbase+380,5140-starybalancer-40,300,240);
+    QRect s8box_2(sxbase+380,5700-starybalancer-90,300,240);
+    QRect s9box_2(sxbase+380,6060-starybalancer-100,300,240);
+    QRect s10box_2(sxbase+380,6400-starybalancer-110,300,240);
+    QRect s11box_2(sxbase+380,6840-starybalancer-130,300,240);
+    QRect s12box_2(sxbase+380,7340-starybalancer-150,300,240);
+    QRect s13box_2(sxbase+380,7740-starybalancer-150,300,240);
+    QRect s14box_2(sxbase+380,8220-starybalancer-170,300,240);
+    //3rd
+    QRect s1box_3(sxbase+(380*2),2530-starybalancer,300,240);
+    QRect s2box_3(sxbase+(380*2),2900-starybalancer,300,240);
+    QRect s3box_3(sxbase+(380*2),3260-starybalancer-40,300,240);
+    QRect s4box_3(sxbase+(380*2),3580-starybalancer-40,300,240);
+    QRect s5box_3(sxbase+(380*2),4000-starybalancer-40,300,240);
+    QRect s6box_3(sxbase+(380*2),4500-starybalancer-40,300,240);
+    QRect s7box_3(sxbase+(380*2),5140-starybalancer-40,300,240);
+    QRect s8box_3(sxbase+(380*2),5700-starybalancer-90,300,240);
+    QRect s9box_3(sxbase+(380*2),6060-starybalancer-100,300,240);
+    QRect s10box_3(sxbase+(380*2),6400-starybalancer-110,300,240);
+    QRect s11box_3(sxbase+(380*2),6840-starybalancer-130,300,240);
+    QRect s12box_3(sxbase+(380*2),7340-starybalancer-150,300,240);
+    QRect s13box_3(sxbase+(380*2),7740-starybalancer-150,300,240);
+    QRect s14box_3(sxbase+(380*2),8220-starybalancer-170,300,240);
+    //4th
+    QRect s1box_4(sxbase+(380*3),2530-starybalancer,300,240);
+    QRect s2box_4(sxbase+(380*3),2900-starybalancer,300,240);
+    QRect s3box_4(sxbase+(380*3),3260-starybalancer-40,300,240);
+    QRect s4box_4(sxbase+(380*3),3580-starybalancer-40,300,240);
+    QRect s5box_4(sxbase+(380*3),4000-starybalancer-40,300,240);
+    QRect s6box_4(sxbase+(380*3),4500-starybalancer-40,300,240);
+    QRect s7box_4(sxbase+(380*3),5140-starybalancer-40,300,240);
+    QRect s8box_4(sxbase+(380*3),5700-starybalancer-90,300,240);
+    QRect s9box_4(sxbase+(380*3),6060-starybalancer-100,300,240);
+    QRect s10box_4(sxbase+(380*3),6400-starybalancer-110,300,240);
+    QRect s11box_4(sxbase+(380*3),6840-starybalancer-130,300,240);
+    QRect s12box_4(sxbase+(380*3),7340-starybalancer-150,300,240);
+    QRect s13box_4(sxbase+(380*3),7740-starybalancer-150,300,240);
+    QRect s14box_4(sxbase+(380*3),8220-starybalancer-170,300,240);
+    //1st
+    QRect s1box_1_2s(sxbase,2530+50-starybalancer,320,130);
+    QRect s2box_1_2s(sxbase,2900+50-starybalancer,320,130);
+    QRect s3box_1_2s(sxbase,3260+50-starybalancer-40,320,130);
+    QRect s4box_1_2s(sxbase,3580+50-starybalancer-40,320,130);
+    QRect s5box_1_2s(sxbase,4000+50-starybalancer-40,320,130);
+    QRect s6box_1_2s(sxbase,4500+50-starybalancer-40,320,130);
+    QRect s7box_1_2s(sxbase,5140+50-starybalancer-50,320,130);
+    QRect s8box_1_2s(sxbase,5700+50-starybalancer-90,320,130);
+    QRect s9box_1_2s(sxbase,6060+50-starybalancer-100,320,130);
+    QRect s10box_1_2s(sxbase,6400+50-starybalancer-110,320,130);
+    QRect s11box_1_2s(sxbase,6840+50-starybalancer-130,320,130);
+    QRect s12box_1_2s(sxbase,7340+50-starybalancer-150,320,130);
+    QRect s13box_1_2s(sxbase,7740+50-starybalancer-150,320,130);
+    QRect s14box_1_2s(sxbase,8220+50-starybalancer-170,320,130);
+    //2nd
+    QRect s1box_2_2s(sxbase+380,2530+50-starybalancer,320,130);
+    QRect s2box_2_2s(sxbase+380,2900+50-starybalancer,320,130);
+    QRect s3box_2_2s(sxbase+380,3260+50-starybalancer-40,320,130);
+    QRect s4box_2_2s(sxbase+380,3580+50-starybalancer-40,320,130);
+    QRect s5box_2_2s(sxbase+380,4000+50-starybalancer-40,320,130);
+    QRect s6box_2_2s(sxbase+380,4500+50-starybalancer-40,320,130);
+    QRect s7box_2_2s(sxbase+380,5140+50-starybalancer-50,320,130);
+    QRect s8box_2_2s(sxbase+380,5700+50-starybalancer-90,320,130);
+    QRect s9box_2_2s(sxbase+380,6060+50-starybalancer-100,320,130);
+    QRect s10box_2_2s(sxbase+380,6400+50-starybalancer-110,320,130);
+    QRect s11box_2_2s(sxbase+380,6840+50-starybalancer-130,320,130);
+    QRect s12box_2_2s(sxbase+380,7340+50-starybalancer-150,320,130);
+    QRect s13box_2_2s(sxbase+380,7740+50-starybalancer-150,320,130);
+    QRect s14box_2_2s(sxbase+380,8220+50-starybalancer-170,320,130);
+    //3rd
+    QRect s1box_3_2s(sxbase+(380*2),2530+50-starybalancer,320,130);
+    QRect s2box_3_2s(sxbase+(380*2),2900+50-starybalancer,320,130);
+    QRect s3box_3_2s(sxbase+(380*2),3260+50-starybalancer-40,320,130);
+    QRect s4box_3_2s(sxbase+(380*2),3580+50-starybalancer-40,320,130);
+    QRect s5box_3_2s(sxbase+(380*2),4000+50-starybalancer-40,320,130);
+    QRect s6box_3_2s(sxbase+(380*2),4500+50-starybalancer-40,320,130);
+    QRect s7box_3_2s(sxbase+(380*2),5140+50-starybalancer-50,320,130);
+    QRect s8box_3_2s(sxbase+(380*2),5700+50-starybalancer-100,320,130);
+    QRect s9box_3_2s(sxbase+(380*2),6060+50-starybalancer-90,320,130);
+    QRect s10box_3_2s(sxbase+(380*2),6400+50-starybalancer-110,320,130);
+    QRect s11box_3_2s(sxbase+(380*2),6840+50-starybalancer-130,320,130);
+    QRect s12box_3_2s(sxbase+(380*2),7340+50-starybalancer-150,320,130);
+    QRect s13box_3_2s(sxbase+(380*2),7740+50-starybalancer-150,320,130);
+    QRect s14box_3_2s(sxbase+(380*2),8220+50-starybalancer-170,320,130);
+    //4th
+    QRect s1box_4_2s(sxbase+(380*3),2530+50-starybalancer,320,130);
+    QRect s2box_4_2s(sxbase+(380*3),2900+50-starybalancer,320,130);
+    QRect s3box_4_2s(sxbase+(380*3),3260+50-starybalancer-40,320,130);
+    QRect s4box_4_2s(sxbase+(380*3),3580+50-starybalancer-40,320,130);
+    QRect s5box_4_2s(sxbase+(380*3),4000+50-starybalancer-40,320,130);
+    QRect s6box_4_2s(sxbase+(380*3),4500+50-starybalancer-40,320,130);
+    QRect s7box_4_2s(sxbase+(380*3),5140+50-starybalancer-50,320,130);
+    QRect s8box_4_2s(sxbase+(380*3),5700+50-starybalancer-90,320,130);
+    QRect s9box_4_2s(sxbase+(380*3),6060+50-starybalancer-100,320,130);
+    QRect s10box_4_2s(sxbase+(380*3),6400+50-starybalancer-110,320,130);
+    QRect s11box_4_2s(sxbase+(380*3),6840+50-starybalancer-130,320,130);
+    QRect s12box_4_2s(sxbase+(380*3),7340+50-starybalancer-150,320,130);
+    QRect s13box_4_2s(sxbase+(380*3),7740+50-starybalancer-150,320,130);
+    QRect s14box_4_2s(sxbase+(380*3),8220+50-starybalancer-170,320,130);
+    //1st
+    QRect s1box_1_3s(sxbase,2530-20-starybalancer,320,240);
+    QRect s2box_1_3s(sxbase,2900-20-starybalancer,320,240);
+    QRect s3box_1_3s(sxbase,3260-20-starybalancer-40,320,240);
+    QRect s4box_1_3s(sxbase,3580-20-starybalancer-40,320,240);
+    QRect s5box_1_3s(sxbase,4000-20-starybalancer-40,320,240);
+    QRect s6box_1_3s(sxbase,4500-20-starybalancer-40,320,240);
+    QRect s7box_1_3s(sxbase,5140-20-starybalancer-50,320,240);
+    QRect s8box_1_3s(sxbase,5700-20-starybalancer-90,320,240);
+    QRect s9box_1_3s(sxbase,6060-20-starybalancer-100,320,240);
+    QRect s10box_1_3s(sxbase,6400-20-starybalancer-110,320,240);
+    QRect s11box_1_3s(sxbase,6840-20-starybalancer-130,320,240);
+    QRect s12box_1_3s(sxbase,7340-20-starybalancer-150,320,240);
+    QRect s13box_1_3s(sxbase,7740-20-starybalancer-150,320,240);
+    QRect s14box_1_3s(sxbase,8220-20-starybalancer-170,320,240);
+    //2nd
+    QRect s1box_2_3s(sxbase+380,2530-20-starybalancer,320,240);
+    QRect s2box_2_3s(sxbase+380,2900-20-starybalancer,320,240);
+    QRect s3box_2_3s(sxbase+380,3260-20-starybalancer-40,320,240);
+    QRect s4box_2_3s(sxbase+380,3580-20-starybalancer-40,320,240);
+    QRect s5box_2_3s(sxbase+380,4000-20-starybalancer-40,320,240);
+    QRect s6box_2_3s(sxbase+380,4500-20-starybalancer-40,320,240);
+    QRect s7box_2_3s(sxbase+380,5140-20-starybalancer-50,320,240);
+    QRect s8box_2_3s(sxbase+380,5700-20-starybalancer-90,320,240);
+    QRect s9box_2_3s(sxbase+380,6060-20-starybalancer-100,320,240);
+    QRect s10box_2_3s(sxbase+380,6400-20-starybalancer-110,320,240);
+    QRect s11box_2_3s(sxbase+380,6840-20-starybalancer-130,320,240);
+    QRect s12box_2_3s(sxbase+380,7340-20-starybalancer-150,320,240);
+    QRect s13box_2_3s(sxbase+380,7740-20-starybalancer-150,320,240);
+    QRect s14box_2_3s(sxbase+380,8220-20-starybalancer-170,320,240);
+    //3rd
+    QRect s1box_3_3s(sxbase+(380*2),2530-20-starybalancer,320,240);
+    QRect s2box_3_3s(sxbase+(380*2),2900-20-starybalancer,320,240);
+    QRect s3box_3_3s(sxbase+(380*2),3260-20-starybalancer-40,320,240);
+    QRect s4box_3_3s(sxbase+(380*2),3580-20-starybalancer-40,320,240);
+    QRect s5box_3_3s(sxbase+(380*2),4000-20-starybalancer-40,320,240);
+    QRect s6box_3_3s(sxbase+(380*2),4500-20-starybalancer-40,320,240);
+    QRect s7box_3_3s(sxbase+(380*2),5140-20-starybalancer-50,320,240);
+    QRect s8box_3_3s(sxbase+(380*2),5700-20-starybalancer-90,320,240);
+    QRect s9box_3_3s(sxbase+(380*2),6060-20-starybalancer-100,320,240);
+    QRect s10box_3_3s(sxbase+(380*2),6400-20-starybalancer-110,320,240);
+    QRect s11box_3_3s(sxbase+(380*2),6840-20-starybalancer-130,320,240);
+    QRect s12box_3_3s(sxbase+(380*2),7340-20-starybalancer-150,320,240);
+    QRect s13box_3_3s(sxbase+(380*2),7740-20-starybalancer-150,320,240);
+    QRect s14box_3_3s(sxbase+(380*2),8220-20-starybalancer-170,320,240);
+    //4th
+    QRect s1box_4_3s(sxbase+(380*3)-40,2530-20-starybalancer,320,240);
+    QRect s2box_4_3s(sxbase+(380*3)-40,2900-20-starybalancer,320,240);
+    QRect s3box_4_3s(sxbase+(380*3)-40,3260-20-starybalancer-40,320,240);
+    QRect s4box_4_3s(sxbase+(380*3)-40,3580-20-starybalancer-40,320,240);
+    QRect s5box_4_3s(sxbase+(380*3)-40,4000-20-starybalancer-40,320,240);
+    QRect s6box_4_3s(sxbase+(380*3)-40,4500-20-starybalancer-40,320,240);
+    QRect s7box_4_3s(sxbase+(380*3)-40,5140-20-starybalancer-50,320,240);
+    QRect s8box_4_3s(sxbase+(380*3)-40,5700-20-starybalancer-90,320,240);
+    QRect s9box_4_3s(sxbase+(380*3)-40,6060-20-starybalancer-100,320,240);
+    QRect s10box_4_3s(sxbase+(380*3)-40,6400-20-starybalancer-110,320,240);
+    QRect s11box_4_3s(sxbase+(380*3)-40,6840-20-starybalancer-130,320,240);
+    QRect s12box_4_3s(sxbase+(380*3)-40,7340-20-starybalancer-150,320,240);
+    QRect s13box_4_3s(sxbase+(380*3)-40,7740-20-starybalancer-150,320,240);
+    QRect s14box_4_3s(sxbase+(380*3)-40,8220-20-starybalancer-170,320,240);
 
     //start drawing stars
 
@@ -2504,15 +2545,15 @@ void MainWindow::on_lineEdit_studlrn_textChanged(const QString &arg1)
 void MainWindow::on_actionAbout_HSRCS_triggered()
 {
     //initiate splash
-    QString msg = "(HSRCS) High School Report Card System version 1.0 ";
+    QString msg = "(HSRCS) High School Report Card System version 0.01 ";
     msg += "is a free and open-source software (FOSS) for automated report card generation and archiving.\n\n";
-    msg += "Copyright © 2014 Mark Joseph J. Solidarios. \n\n";
+    msg += "Copyright © 2015 Mark Joseph J. Solidarios. \n\n";
     msg += "The developer would like to thank his teacher, Mrs. Salvacion P. Jade for ";
     msg += "the initiative and inspiration in pursuing this project.";
     msg += "\n\nFor comments and suggestions please email the developer, ";
-    msg += "markjoseph.solidarios@outlook.com.\n\n";
+    msg += "mjsolidarios@wvsu.edu.ph.\n\n";
     msg += "This program comes with ABSOLUTELY NO WARRANTY.";
-    QMessageBox::about(this,"About HSRCS v1.0",msg);
+    QMessageBox::about(this,"About HSRCS v0.01",msg);
 
 }
 

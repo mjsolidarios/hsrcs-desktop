@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>High School Report Card System v1.0</string>
+   <string>High School Report Card System v0.01</string>
   </property>
   <property name="windowIcon">
    <iconset resource="data.qrc">
@@ -161,7 +161,7 @@
            </sizepolicy>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>4</number>
           </property>
           <property name="documentMode">
            <bool>false</bool>
@@ -181,8 +181,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>570</width>
-                 <height>425</height>
+                 <width>378</width>
+                 <height>416</height>
                 </rect>
                </property>
                <layout class="QFormLayout" name="formLayout">
@@ -614,6 +614,9 @@
                   </item>
                   <item row="6" column="2">
                    <widget class="QSpinBox" name="spinBox_g_tve_gr2">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -644,6 +647,9 @@
                   </item>
                   <item row="13" column="2">
                    <widget class="QSpinBox" name="spinBox_g_td_gr2">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -664,6 +670,9 @@
                   </item>
                   <item row="13" column="0">
                    <widget class="QLabel" name="label_22">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                       <horstretch>0</horstretch>
@@ -723,6 +732,9 @@
                   </item>
                   <item row="13" column="1">
                    <widget class="QSpinBox" name="spinBox_g_td_gr1">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -785,6 +797,9 @@
                   </item>
                   <item row="12" column="2">
                    <widget class="QSpinBox" name="spinBox_g_icf_gr2">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -827,6 +842,9 @@
                   </item>
                   <item row="13" column="3">
                    <widget class="QSpinBox" name="spinBox_g_td_gr3">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -847,6 +865,9 @@
                   </item>
                   <item row="13" column="4">
                    <widget class="QSpinBox" name="spinBox_g_td_gr4">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -857,6 +878,9 @@
                   </item>
                   <item row="12" column="4">
                    <widget class="QSpinBox" name="spinBox_g_icf_gr4">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -899,6 +923,9 @@
                   </item>
                   <item row="6" column="3">
                    <widget class="QSpinBox" name="spinBox_g_tve_gr3">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -932,6 +959,9 @@
                   </item>
                   <item row="12" column="3">
                    <widget class="QSpinBox" name="spinBox_g_icf_gr3">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -972,6 +1002,9 @@
                   </item>
                   <item row="12" column="0">
                    <widget class="QLabel" name="label_21">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                       <horstretch>0</horstretch>
@@ -1094,6 +1127,9 @@
                   </item>
                   <item row="6" column="0">
                    <widget class="QLabel" name="label_16">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                       <horstretch>0</horstretch>
@@ -1147,6 +1183,9 @@
                   </item>
                   <item row="6" column="4">
                    <widget class="QSpinBox" name="spinBox_g_tve_gr4">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -1239,6 +1278,9 @@
                   </item>
                   <item row="6" column="1">
                    <widget class="QSpinBox" name="spinBox_g_tve_gr1">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -1259,6 +1301,9 @@
                   </item>
                   <item row="12" column="1">
                    <widget class="QSpinBox" name="spinBox_g_icf_gr1">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -2342,7 +2387,11 @@
                    </widget>
                   </item>
                   <item row="8" column="0">
-                   <widget class="QLineEdit" name="lineEdit_elig_date"/>
+                   <widget class="QLineEdit" name="lineEdit_elig_date">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
                   </item>
                   <item row="3" column="0">
                    <widget class="QLabel" name="label_44">
@@ -2856,7 +2905,7 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>305</width>
+                     <width>306</width>
                      <height>569</height>
                     </rect>
                    </property>
@@ -3295,7 +3344,7 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>305</width>
+                     <width>306</width>
                      <height>569</height>
                     </rect>
                    </property>
@@ -3734,7 +3783,7 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>305</width>
+                     <width>306</width>
                      <height>569</height>
                     </rect>
                    </property>
@@ -4573,7 +4622,7 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>755</width>
+                 <width>754</width>
                  <height>803</height>
                 </rect>
                </property>
@@ -4606,7 +4655,7 @@
                           <rect>
                            <x>0</x>
                            <y>0</y>
-                           <width>683</width>
+                           <width>682</width>
                            <height>82</height>
                           </rect>
                          </property>
@@ -4676,7 +4725,7 @@
                           <rect>
                            <x>0</x>
                            <y>0</y>
-                           <width>683</width>
+                           <width>682</width>
                            <height>82</height>
                           </rect>
                          </property>
@@ -4746,7 +4795,7 @@
                           <rect>
                            <x>0</x>
                            <y>0</y>
-                           <width>683</width>
+                           <width>682</width>
                            <height>82</height>
                           </rect>
                          </property>
@@ -4816,7 +4865,7 @@
                           <rect>
                            <x>0</x>
                            <y>0</y>
-                           <width>683</width>
+                           <width>682</width>
                            <height>82</height>
                           </rect>
                          </property>
